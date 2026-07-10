@@ -1,1 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tapeçaria Incanto LTDA</title>
+    <style>
+        :root {
+            --primary-color: #8e44ad; /* Roxo elegante / Design / Decoração */
+            --secondary-color: #2c3e50; /* Azul escuro corporativo */
+            --accent-color: #27ae60; /* Verde sucesso / Ativa */
+            --bg-light: #fdfefe;
+            --bg-body: #f4f6f7;
+            --text-dark: #2c3e50;
+            --text-muted: #7f8c8d;
+            --border-color: #e5e8e8;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .company-name {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .company-fantasy {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .cnpj-badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .status-banner {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Menu de Navegação */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .nav-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 20px;
+            padding: 5px 10px;
+            transition: all 0.3s;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        /* Container Principal */
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--bg-body);
+            padding-bottom: 12px;
+        }
+
+        .info-group {
+            margin-bottom: 18px;
+        }
+
+        .info-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 2px;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .info-value.highlight {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* Links de Ação para Contatos */
+        .action-link {
+            display: inline-block;
+            margin-left: 10px;
+            padding: 2px 10px;
+            background-color: #f0f3f4;
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .action-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Seção Full Width */
+        .full-width-card {
+            grid-column: 1 / -1;
+        }
+
+        .address-box {
+            background-color: #fcf8ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 20px;
+            margin-top: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.05rem;
+            color: #4a235a;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            background-color: white;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .company-name {
+                font-size: 2rem;
+            }
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .nav-link {
+                margin: 0;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <h1 class="company-name">Tapeçaria Incanto LTDA</h1>
+            <div class="company-fantasy">Nome Fantasia: Tapeçaria Incanto</div>
+            <div class="cnpj-badge">CNPJ: 18.110.118/0001-38</div>
+            <div>
+                <span class="status-banner">Situação Cadastral: Ativa</span>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#registro" class="nav-link">Informações de Registro</a>
+            <a href="#contatos" class="nav-link">Canais de Contato</a>
+            <a href="#localizacao" class="nav-link">Localização</a>
+            <a href="#correspondencia" class="nav-link">Correspondência</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="grid-container">
+            
+            <section id="registro" class="card">
+                <h2 class="card-title">Informações de Registro</h2>
+                
+                <div class="info-group">
+                    <div class="info-label">Razão Social</div>
+                    <div class="info-value">Tapeçaria Incanto LTDA</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Inscrição Estadual (SP)</div>
+                    <div class="info-value">142.387.172.115</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Data de Abertura</div>
+                    <div class="info-value">14/05/2013 <span style="font-size: 0.9rem; color: var(--text-muted);">(13 anos, 1 mês e 27 dias)</span></div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Capital Social</div>
+                    <div class="info-value highlight">R$ 25.000,00</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Porte e Tipo</div>
+                    <div class="info-value">Micro Empresa (ME) / Matriz</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Natureza Jurídica</div>
+                    <div class="info-value">Sociedade Empresária Limitada</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Opção pelo Simples Nacional</div>
+                    <div class="info-value">Sim <span style="font-size: 0.9rem; color: var(--text-muted);">(desde 01/01/2025)</span></div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Opção pelo MEI</div>
+                    <div class="info-value">Não</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Situação Cadastral</div>
+                    <div class="info-value" style="color: var(--accent-color); font-weight: 600;">Ativa <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: normal;">(desde 14/05/2013)</span></div>
+                </div>
+            </section>
+
+            <section id="contatos" class="card">
+                <h2 class="card-title">Canais de Contato</h2>
+
+                <div class="info-group">
+                    <div class="info-label">E-mail Corporativo</div>
+                    <div class="info-value">
+                        tapecariaincanto@gmail.com
+                        <a href="mailto:tapecariaincanto@gmail.com" class="action-link">Enviar E-mail</a>
+                    </div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Telefone Principal</div>
+                    <div class="info-value">
+                        (11) 2307-5734
+                        <a href="tel:1123075734" class="action-link">Ligar</a>
+                    </div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Telefone Alternativo</div>
+                    <div class="info-value">
+                        (11) 4003-6336
+                        <a href="tel:1140036336" class="action-link">Ligar</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="localizacao" class="card">
+                <h2 class="card-title">Localização</h2>
+
+                <div class="info-group">
+                    <div class="info-label">Logradouro</div>
+                    <div class="info-value">Rua Onofre Jorge Velho, 251</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Bairro</div>
+                    <div class="info-value">Cidade Líder</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Município / Estado</div>
+                    <div class="info-value">São Paulo - SP</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">CEP</div>
+                    <div class="info-value">08280-330</div>
+                </div>
+            </section>
+
+            <section id="correspondencia" class="card full-width-card">
+                <h2 class="card-title">Para Correspondência</h2>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 10px;">Formatação oficial recomendada para fins postais:</p>
+                <div class="address-box">
+                    Tapeçaria Incanto Tapeçaria Incanto LTDA<br>
+                    Rua Onofre Jorge Velho 251<br>
+                    Cidade Lider<br>
+                    São Paulo SP<br>
+                    08280-330
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tapeçaria Incanto LTDA. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
